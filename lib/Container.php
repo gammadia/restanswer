@@ -5,8 +5,8 @@ namespace Voilab\Restanswer;
 use Voilab\Restanswer\ContentType\Csv;
 use Voilab\Restanswer\ContentType\Json;
 use Voilab\Restanswer\ContentType\Standard;
-use Voilab\Restanswer\ContentType\String;
 use Voilab\Restanswer\ContentType\Tab;
+use Voilab\Restanswer\ContentType\Text;
 use Voilab\Restanswer\Renderer\Slim;
 
 class Container extends \Pimple\Container {
@@ -60,7 +60,7 @@ class Container extends \Pimple\Container {
             return new Tab($c);
         };
         $this['stringContentType'] = function ($c) {
-            return new String($c);
+            return new Text($c);
         };
 
         $this['processor'] = function ($c) {
