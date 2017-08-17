@@ -4,7 +4,11 @@ namespace Voilab\Restanswer\ContentType;
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
 
-class String implements ContentType {
+/**
+ * Class Text
+ * @package Voilab\Restanswer\ContentType
+ */
+class Text implements ContentType {
 
     public function render($content, Renderer $renderer) {
         if (is_string($content)) {

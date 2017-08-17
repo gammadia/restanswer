@@ -12,7 +12,7 @@ Create a composer.json file in your project root:
 ```json
 {
     "require": {
-        "voilab/restanswer": "0.1.*"
+        "voilab/restanswer": "0.4.*"
     }
 }
 ```
