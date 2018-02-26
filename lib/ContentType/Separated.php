@@ -8,7 +8,13 @@ class Separated implements ContentType {
 
     public $separator;
 
-    public function render($content, Renderer $renderer) {
+    /**
+     * @param $content
+     * @param Renderer $renderer
+     * @param bool $forceEndOfFile
+     * @return array|string
+     */
+    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
         if (is_string($content)) {
             return $content;
         } elseif (is_array($content)) {
@@ -22,7 +28,13 @@ class Separated implements ContentType {
             }
             $linebreak = $renderer->getOption('linebreak', "\n");
 
-            return implode($linebreak, $formatted);
+            $plainText = implode($linebreak, $formatted);
+
+            if ($forceEndOfFile) {
+                $plainText .= $linebreak;
+            }
+
+            return $plainText;
         } else {
             return 'Bad format according to the required response Content-Type.';
         }
