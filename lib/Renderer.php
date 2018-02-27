@@ -1,13 +1,20 @@
 <?php
+
 namespace Voilab\Restanswer;
 
-
-abstract class Renderer {
-
+/**
+ * Class Renderer
+ * @package Voilab\Restanswer
+ */
+abstract class Renderer
+{
+    /**
+     * @var Response
+     */
+    public $response;
     public $contentType;
     private $content;
     public $status = 200;
-    public $response;
     public $options = [];
 
     public $container;
@@ -22,7 +29,12 @@ abstract class Renderer {
 
 /** ================== Constructor ========================================== */
 
-    public function __construct(Container $c) {
+    /**
+     * Renderer constructor.
+     * @param Container $c
+     */
+    public function __construct(Container $c)
+    {
         $this->container = $c;
         $this->contentType = $c['config']['content-type'];
     }
@@ -38,25 +50,41 @@ abstract class Renderer {
 
 /** ================== Public methods ======================================= */
 
-    public function prepare() {
+    /**
+     * @return $this
+     */
+    public function prepare()
+    {
         $this->prepareContent();
         $this->prepareHeaders();
         return $this;
     }
 
-    public function convert($from, $to) {
+    /**
+     * @param $from
+     * @param $to
+     * @return $this
+     */
+    public function convert($from, $to)
+    {
         $content = $this->content;
         $content = iconv($from, $to, $content);
         $this->content = $content;
         return $this;
     }
 
-    public function render() {
+    /**
+     * @return $this
+     */
+    public function render()
+    {
         $this->prepare();
         $this->engineRender($this->getResponse()->isInterrupt());
+        return $this;
     }
 
-    public function getContent() {
+    public function getContent()
+    {
         return $this->content;
     }
 
@@ -72,16 +100,30 @@ abstract class Renderer {
 
 /** ================ Accessors ============================================== */
 
-    public function getContentType() {
+    /**
+     * @return mixed
+     */
+    public function getContentType()
+    {
         return $this->contentType;
     }
 
-    public function setContentType($type) {
+    /**
+     * @param $type
+     * @return $this
+     */
+    public function setContentType($type)
+    {
         $this->contentType = $type;
         return $this;
     }
 
-    public function setResponse(Response $response) {
+    /**
+     * @param Response $response
+     * @return $this
+     */
+    public function setResponse(Response $response)
+    {
         $this->response = $response;
         return $this;
     }
@@ -89,7 +131,8 @@ abstract class Renderer {
     /**
      * @return Response
      */
-    public function getResponse() {
+    public function getResponse()
+    {
         return $this->response;
     }
 
@@ -100,7 +143,8 @@ abstract class Renderer {
      * @param mixed $default
      * @return mixed
      */
-    public function getOption($name, $default = null) {
+    public function getOption($name, $default = null)
+    {
         if (!isset($this->options[$name])) {
             return $default;
         }
@@ -114,7 +158,8 @@ abstract class Renderer {
      * @param mixed $value
      * @return Renderer
      */
-    public function setOption($name, $value) {
+    public function setOption($name, $value)
+    {
         $this->options[$name] = $value;
         return $this;
     }
@@ -130,7 +175,8 @@ abstract class Renderer {
 
 /** ================== Private methods ====================================== */
 
-    protected function getContentTypeAdapter() {
+    protected function getContentTypeAdapter()
+    {
         if (isset($this->container['config']['mimetypes'][$this->contentType])) {
             return $this->container['config']['mimetypes'][$this->contentType] . 'ContentType';
         }
@@ -141,12 +187,17 @@ abstract class Renderer {
     /**
      * Préparation du contenu
      */
-    protected function prepareContent() {
+    protected function prepareContent()
+    {
         $content = $this->response->getContent();
         $this->status = $this->response->getHttpStatus();
 
         if ($this->status >= 200 && $this->status < 400) {
-            $this->content = $this->container[$this->getContentTypeAdapter()]->render($content, $this);
+            $this->content = $this->container[$this->getContentTypeAdapter()]->render(
+                $content,
+                $this,
+                $this->response->isNewLineEOF()
+            );
         } else {
             $this->content = $this->container[$this->getContentTypeAdapter()]->renderError($content, $this);
         }
@@ -155,7 +206,8 @@ abstract class Renderer {
     /**
      * Préparation des headers
      */
-    protected function prepareHeaders() {
+    protected function prepareHeaders()
+    {
         // format de retour
         $this->setHeader('Content-Type', $this->contentType . '; charset=' . $this->response->getEncoding());
 
@@ -168,5 +220,4 @@ abstract class Renderer {
     }
 
 /** ================ / Private methods ====================================== */
-
 }

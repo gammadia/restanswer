@@ -8,9 +8,14 @@ use Voilab\Restanswer\Renderer;
  * Class Text
  * @package Voilab\Restanswer\ContentType
  */
-class Text implements ContentType {
+class Text implements ContentType
+{
 
-    public function render($content, Renderer $renderer) {
+    /**
+     * @inheritdoc
+     */
+    public function render($content, Renderer $renderer, $newLineEOF = false)
+    {
         if (is_string($content)) {
             return $content;
         } elseif (is_object($content)) {
@@ -23,7 +28,11 @@ class Text implements ContentType {
         }
     }
 
-    public function renderError($content, Renderer $renderer) {
+    /**
+     * @inheritdoc
+     */
+    public function renderError($content, Renderer $renderer)
+    {
         return $this->render($content, $renderer);
     }
 }

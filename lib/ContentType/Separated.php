@@ -1,20 +1,28 @@
 <?php
+
 namespace Voilab\Restanswer\ContentType;
 
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
 
-class Separated implements ContentType {
-
-    public $separator;
+/**
+ * Class Separated
+ * @package Voilab\Restanswer\ContentType
+ */
+class Separated implements ContentType
+{
 
     /**
-     * @param $content
-     * @param Renderer $renderer
-     * @param bool $forceEndOfFile
-     * @return array|string
+     * @var string
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
+    public $separator;
+
+
+    /**
+     * @inheritdoc
+     */
+    public function render($content, Renderer $renderer, $newLineEOF = false)
+    {
         if (is_string($content)) {
             return $content;
         } elseif (is_array($content)) {
@@ -30,7 +38,7 @@ class Separated implements ContentType {
 
             $plainText = implode($linebreak, $formatted);
 
-            if ($forceEndOfFile) {
+            if ($newLineEOF) {
                 $plainText .= $linebreak;
             }
 
@@ -40,7 +48,11 @@ class Separated implements ContentType {
         }
     }
 
-    public function renderError($content, Renderer $renderer) {
+    /**
+     * @inheritdoc
+     */
+    public function renderError($content, Renderer $renderer)
+    {
         return $this->render($content, $renderer);
     }
 }

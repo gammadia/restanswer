@@ -1,26 +1,34 @@
 <?php
+
 namespace Voilab\Restanswer;
 
-
-class Response {
+/**
+ * Class Response
+ * @package Voilab\Restanswer
+ */
+class Response
+{
 
     public $encoding = 'utf-8';
     public $httpStatus = 200;
     public $content = null;
     public $interrupt = false;
     public $headers = array();
+    private $newLineEOF = false;
 
     /**
      * @var Container $container
      */
     public $container;
 
-    public function __construct(Container $c) {
+    /**
+     * Response constructor.
+     * @param Container $c
+     */
+    public function __construct(Container $c)
+    {
         $this->container = $c;
     }
-
-
-
 
     /** ================== Public methods ======================================= */
 
@@ -37,7 +45,8 @@ class Response {
      * @param  string  $content    Response content
      * @return Renderer
      */
-    public function error($httpStatus, $content) {
+    public function error($httpStatus, $content)
+    {
         return $this
             ->setHttpStatus($httpStatus)
             ->setContent($content)
@@ -49,7 +58,8 @@ class Response {
      * @param string $contentType
      * @return Renderer
      */
-    public function getRenderer($contentType = null) {
+    public function getRenderer($contentType = null)
+    {
         $renderer = $this->container[$this->container['config']['engine'] . 'Renderer'];
         $renderer->setResponse($this);
         if ($contentType) {
@@ -68,7 +78,11 @@ class Response {
 
     /** ================ Accessors ============================================== */
 
-    public function getHttpStatus() {
+    /**
+     * @return int
+     */
+    public function getHttpStatus()
+    {
         return $this->httpStatus;
     }
 
@@ -76,21 +90,35 @@ class Response {
      * @param $status
      * @return $this
      */
-    public function setHttpStatus($status) {
+    public function setHttpStatus($status)
+    {
         $this->httpStatus = $status;
         return $this;
     }
 
-    public function setInterrupt($value) {
+    /**
+     * @param $value
+     * @return $this
+     */
+    public function setInterrupt($value)
+    {
         $this->interrupt = $value;
         return $this;
     }
 
-    public function isInterrupt() {
+    /**
+     * @return bool
+     */
+    public function isInterrupt()
+    {
         return $this->interrupt;
     }
 
-    public function getContent() {
+    /**
+     * @return null
+     */
+    public function getContent()
+    {
         return $this->content;
     }
 
@@ -98,12 +126,17 @@ class Response {
      * @param $content
      * @return $this
      */
-    public function setContent($content) {
+    public function setContent($content)
+    {
         $this->content = $content;
         return $this;
     }
 
-    public function getEncoding() {
+    /**
+     * @return string
+     */
+    public function getEncoding()
+    {
         return $this->encoding;
     }
 
@@ -111,12 +144,17 @@ class Response {
      * @param $encoding
      * @return $this
      */
-    public function setEncoding($encoding) {
+    public function setEncoding($encoding)
+    {
         $this->encoding = $encoding;
         return $this;
     }
 
-    public function getHeaders() {
+    /**
+     * @return array
+     */
+    public function getHeaders()
+    {
         return $this->headers;
     }
 
@@ -124,11 +162,29 @@ class Response {
      * @param $headers
      * @return $this
      */
-    public function setHeaders($headers) {
+    public function setHeaders($headers)
+    {
         $this->headers = $headers;
         return $this;
     }
 
-    /** ============== / Accessors ============================================== */
+    /**
+     * @return bool
+     */
+    public function isNewLineEOF()
+    {
+        return $this->newLineEOF;
+    }
 
+    /**
+     * @param bool $newLineEOF
+     * @return Response
+     */
+    public function setNewLineEOF($newLineEOF)
+    {
+        $this->newLineEOF = $newLineEOF;
+        return $this;
+    }
+
+    /** ============== / Accessors ============================================== */
 }
