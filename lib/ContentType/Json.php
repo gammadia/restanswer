@@ -6,13 +6,19 @@ use Voilab\Restanswer\Renderer;
 
 class Json implements ContentType {
 
-    public function render($content, Renderer $renderer) {
+    /**
+     * @inheritdoc
+     */
+    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
         if ($content) {
             return json_encode($content);
         }
         return null;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function renderError($message, Renderer $renderer) {
         return json_encode(array(
             'message' => $message

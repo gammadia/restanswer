@@ -7,10 +7,16 @@ use Voilab\Restanswer\Renderer;
 
 class Standard implements ContentType {
 
-    public function render($content, Renderer $renderer) {
+    /**
+     * @inheritdoc
+     */
+    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
         return $content;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function renderError($content, Renderer $renderer) {
         return $content;
     }

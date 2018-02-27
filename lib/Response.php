@@ -9,6 +9,7 @@ class Response {
     public $content = null;
     public $interrupt = false;
     public $headers = array();
+    private $forceEndOfFile = false;
 
     /**
      * @var Container $container
@@ -126,6 +127,24 @@ class Response {
      */
     public function setHeaders($headers) {
         $this->headers = $headers;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isForceEndOfFile()
+    {
+        return $this->forceEndOfFile;
+    }
+
+    /**
+     * @param bool $forceEndOfFile
+     * @return Response
+     */
+    public function setForceEndOfFile($forceEndOfFile)
+    {
+        $this->forceEndOfFile = $forceEndOfFile;
         return $this;
     }
 

@@ -6,13 +6,13 @@ use Voilab\Restanswer\Renderer;
 
 class Separated implements ContentType {
 
+    /**
+     * @var string
+     */
     public $separator;
 
     /**
-     * @param $content
-     * @param Renderer $renderer
-     * @param bool $forceEndOfFile
-     * @return array|string
+     * @inheritdoc
      */
     public function render($content, Renderer $renderer, $forceEndOfFile = false) {
         if (is_string($content)) {
@@ -40,6 +40,9 @@ class Separated implements ContentType {
         }
     }
 
+    /**
+     * @inheritdoc
+     */
     public function renderError($content, Renderer $renderer) {
         return $this->render($content, $renderer);
     }

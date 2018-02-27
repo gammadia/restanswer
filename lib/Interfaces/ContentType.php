@@ -6,7 +6,18 @@ use Voilab\Restanswer\Renderer;
 
 interface ContentType {
 
-    public function render($content, Renderer $renderer);
+    /**
+     * @param $content
+     * @param Renderer $renderer
+     * @param bool $forceEndOfFile
+     * @return mixed
+     */
+    public function render($content, Renderer $renderer, $forceEndOfFile = false);
 
+    /**
+     * @param $content
+     * @param Renderer $renderer
+     * @return mixed
+     */
     public function renderError($content, Renderer $renderer);
 }

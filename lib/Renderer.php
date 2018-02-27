@@ -4,10 +4,13 @@ namespace Voilab\Restanswer;
 
 abstract class Renderer {
 
+    /**
+     * @var Response
+     */
+    public $response;
     public $contentType;
     private $content;
     public $status = 200;
-    public $response;
     public $options = [];
 
     public $container;
@@ -146,7 +149,7 @@ abstract class Renderer {
         $this->status = $this->response->getHttpStatus();
 
         if ($this->status >= 200 && $this->status < 400) {
-            $this->content = $this->container[$this->getContentTypeAdapter()]->render($content, $this);
+            $this->content = $this->container[$this->getContentTypeAdapter()]->render($content, $this, $this->response->isForceEndOfFile());
         } else {
             $this->content = $this->container[$this->getContentTypeAdapter()]->renderError($content, $this);
         }
