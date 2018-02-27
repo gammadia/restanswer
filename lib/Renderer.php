@@ -73,6 +73,9 @@ abstract class Renderer
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function render()
     {
         $this->prepare();
