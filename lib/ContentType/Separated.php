@@ -21,7 +21,7 @@ class Separated implements ContentType
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         if (is_string($content)) {
             return $content;
@@ -38,7 +38,7 @@ class Separated implements ContentType
 
             $plainText = implode($linebreak, $formatted);
 
-            if ($forceEndOfFile) {
+            if ($newLineEOF) {
                 $plainText .= $linebreak;
             }
 

@@ -14,10 +14,10 @@ interface ContentType
     /**
      * @param $content
      * @param Renderer $renderer
-     * @param bool $forceEndOfFile
+     * @param bool $newLineEOF
      * @return mixed
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false);
+    public function render($content, Renderer $renderer, $newLineEOF = false);
 
     /**
      * @param $content

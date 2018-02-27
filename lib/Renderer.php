@@ -196,7 +196,7 @@ abstract class Renderer
             $this->content = $this->container[$this->getContentTypeAdapter()]->render(
                 $content,
                 $this,
-                $this->response->isForceEndOfFile()
+                $this->response->isNewLineEOF()
             );
         } else {
             $this->content = $this->container[$this->getContentTypeAdapter()]->renderError($content, $this);

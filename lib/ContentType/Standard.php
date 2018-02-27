@@ -15,7 +15,7 @@ class Standard implements ContentType
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         return $content;
     }

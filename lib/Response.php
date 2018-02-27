@@ -14,7 +14,7 @@ class Response
     public $content = null;
     public $interrupt = false;
     public $headers = array();
-    private $forceEndOfFile = false;
+    private $newLineEOF = false;
 
     /**
      * @var Container $container
@@ -171,18 +171,18 @@ class Response
     /**
      * @return bool
      */
-    public function isForceEndOfFile()
+    public function isNewLineEOF()
     {
-        return $this->forceEndOfFile;
+        return $this->newLineEOF;
     }
 
     /**
-     * @param bool $forceEndOfFile
+     * @param bool $newLineEOF
      * @return Response
      */
-    public function setForceEndOfFile($forceEndOfFile)
+    public function setNewLineEOF($newLineEOF)
     {
-        $this->forceEndOfFile = $forceEndOfFile;
+        $this->newLineEOF = $newLineEOF;
         return $this;
     }
 

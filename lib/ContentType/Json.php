@@ -13,7 +13,7 @@ class Json implements ContentType
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         if ($content) {
             return json_encode($content);
