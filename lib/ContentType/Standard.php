@@ -5,6 +5,10 @@ namespace Voilab\Restanswer\ContentType;
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
 
+/**
+ * Class Standard
+ * @package Voilab\Restanswer\ContentType
+ */
 class Standard implements ContentType {
 
     /**

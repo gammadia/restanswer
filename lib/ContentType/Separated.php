@@ -4,12 +4,18 @@ namespace Voilab\Restanswer\ContentType;
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
 
-class Separated implements ContentType {
+/**
+ * Class Separated
+ * @package Voilab\Restanswer\ContentType
+ */
+class Separated implements ContentType
+{
 
     /**
      * @var string
      */
     public $separator;
+
 
     /**
      * @inheritdoc

@@ -2,6 +2,10 @@
 namespace Voilab\Restanswer;
 
 
+/**
+ * Class Renderer
+ * @package Voilab\Restanswer
+ */
 abstract class Renderer {
 
     /**
@@ -25,6 +29,10 @@ abstract class Renderer {
 
 /** ================== Constructor ========================================== */
 
+    /**
+     * Renderer constructor.
+     * @param Container $c
+     */
     public function __construct(Container $c) {
         $this->container = $c;
         $this->contentType = $c['config']['content-type'];

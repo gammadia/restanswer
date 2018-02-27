@@ -4,6 +4,10 @@ namespace Voilab\Restanswer\ContentType;
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
 
+/**
+ * Class Json
+ * @package Voilab\Restanswer\ContentType
+ */
 class Json implements ContentType {
 
     /**

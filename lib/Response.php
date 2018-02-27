@@ -1,7 +1,10 @@
 <?php
 namespace Voilab\Restanswer;
 
-
+/**
+ * Class Response
+ * @package Voilab\Restanswer
+ */
 class Response {
 
     public $encoding = 'utf-8';
@@ -16,6 +19,10 @@ class Response {
      */
     public $container;
 
+    /**
+     * Response constructor.
+     * @param Container $c
+     */
     public function __construct(Container $c) {
         $this->container = $c;
     }
