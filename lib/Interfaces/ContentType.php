@@ -1,10 +1,15 @@
 <?php
-namespace Voilab\Restanswer\Interfaces;
 
+namespace Voilab\Restanswer\Interfaces;
 
 use Voilab\Restanswer\Renderer;
 
-interface ContentType {
+/**
+ * Interface ContentType
+ * @package Voilab\Restanswer\Interfaces
+ */
+interface ContentType
+{
 
     /**
      * @param $content

@@ -8,12 +8,13 @@ use Voilab\Restanswer\Renderer;
  * Class Json
  * @package Voilab\Restanswer\ContentType
  */
-class Json implements ContentType {
-
+class Json implements ContentType
+{
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
+    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    {
         if ($content) {
             return json_encode($content);
         }
@@ -23,7 +24,8 @@ class Json implements ContentType {
     /**
      * @inheritdoc
      */
-    public function renderError($message, Renderer $renderer) {
+    public function renderError($message, Renderer $renderer)
+    {
         return json_encode(array(
             'message' => $message
         ));

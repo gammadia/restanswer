@@ -1,6 +1,6 @@
 <?php
-namespace Voilab\Restanswer\ContentType;
 
+namespace Voilab\Restanswer\ContentType;
 
 use Voilab\Restanswer\Interfaces\ContentType;
 use Voilab\Restanswer\Renderer;
@@ -9,19 +9,22 @@ use Voilab\Restanswer\Renderer;
  * Class Standard
  * @package Voilab\Restanswer\ContentType
  */
-class Standard implements ContentType {
+class Standard implements ContentType
+{
 
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
+    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    {
         return $content;
     }
 
     /**
      * @inheritdoc
      */
-    public function renderError($content, Renderer $renderer) {
+    public function renderError($content, Renderer $renderer)
+    {
         return $content;
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Voilab\Restanswer\ContentType;
 
 use Voilab\Restanswer\Interfaces\ContentType;
@@ -20,7 +21,8 @@ class Separated implements ContentType
     /**
      * @inheritdoc
      */
-    public function render($content, Renderer $renderer, $forceEndOfFile = false) {
+    public function render($content, Renderer $renderer, $forceEndOfFile = false)
+    {
         if (is_string($content)) {
             return $content;
         } elseif (is_array($content)) {
@@ -49,7 +51,8 @@ class Separated implements ContentType
     /**
      * @inheritdoc
      */
-    public function renderError($content, Renderer $renderer) {
+    public function renderError($content, Renderer $renderer)
+    {
         return $this->render($content, $renderer);
     }
 }
