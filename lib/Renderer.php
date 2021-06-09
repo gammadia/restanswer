@@ -12,16 +12,37 @@ abstract class Renderer
      * @var Response
      */
     public $response;
+
+    /** @var string */
     public $contentType;
+
+    /** @var mixed */
     private $content;
+
+    /** @var int */
     public $status = 200;
+
+    /** @var mixed[] */
     public $options = [];
 
+    /** @var Container */
     public $container;
 
 
 
+    /**
+     * @param bool $interrupt
+     *
+     * @return void
+     */
     abstract public function engineRender($interrupt = false);
+
+    /**
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return void
+     */
     abstract public function setHeader($key, $value);
 
 
@@ -51,7 +72,7 @@ abstract class Renderer
 /** ================== Public methods ======================================= */
 
     /**
-     * @return $this
+     * @return self
      */
     public function prepare()
     {
@@ -61,9 +82,9 @@ abstract class Renderer
     }
 
     /**
-     * @param $from
-     * @param $to
-     * @return $this
+     * @param string $from
+     * @param string $to
+     * @return self
      */
     public function convert($from, $to)
     {
@@ -74,7 +95,7 @@ abstract class Renderer
     }
 
     /**
-     * @return $this
+     * @return self
      */
     public function render()
     {
@@ -83,6 +104,9 @@ abstract class Renderer
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getContent()
     {
         return $this->content;
@@ -109,8 +133,8 @@ abstract class Renderer
     }
 
     /**
-     * @param $type
-     * @return $this
+     * @param string $type
+     * @return self
      */
     public function setContentType($type)
     {
@@ -120,7 +144,7 @@ abstract class Renderer
 
     /**
      * @param Response $response
-     * @return $this
+     * @return self
      */
     public function setResponse(Response $response)
     {
@@ -175,6 +199,9 @@ abstract class Renderer
 
 /** ================== Private methods ====================================== */
 
+    /**
+     * @return string
+     */
     protected function getContentTypeAdapter()
     {
         if (isset($this->container['config']['mimetypes'][$this->contentType])) {
@@ -186,6 +213,8 @@ abstract class Renderer
 
     /**
      * Préparation du contenu
+     *
+     * @return void
      */
     protected function prepareContent()
     {
@@ -205,6 +234,8 @@ abstract class Renderer
 
     /**
      * Préparation des headers
+     *
+     * @return void
      */
     protected function prepareHeaders()
     {

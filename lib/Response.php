@@ -8,12 +8,22 @@ namespace Voilab\Restanswer;
  */
 class Response
 {
-
+    /** @var string */
     public $encoding = 'utf-8';
+
+    /** @var int */
     public $httpStatus = 200;
+
+    /** @var mixed */
     public $content = null;
+
+    /** @var bool */
     public $interrupt = false;
+
+    /** @var array<string, mixed> */
     public $headers = array();
+
+    /** @var bool */
     private $newLineEOF = false;
 
     /**
@@ -87,8 +97,8 @@ class Response
     }
 
     /**
-     * @param $status
-     * @return $this
+     * @param int $status
+     * @return self
      */
     public function setHttpStatus($status)
     {
@@ -97,8 +107,8 @@ class Response
     }
 
     /**
-     * @param $value
-     * @return $this
+     * @param bool $value
+     * @return self
      */
     public function setInterrupt($value)
     {
@@ -123,8 +133,8 @@ class Response
     }
 
     /**
-     * @param $content
-     * @return $this
+     * @param mixed $content
+     * @return self
      */
     public function setContent($content)
     {
@@ -141,8 +151,8 @@ class Response
     }
 
     /**
-     * @param $encoding
-     * @return $this
+     * @param string $encoding
+     * @return self
      */
     public function setEncoding($encoding)
     {
@@ -151,7 +161,7 @@ class Response
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function getHeaders()
     {
@@ -159,8 +169,8 @@ class Response
     }
 
     /**
-     * @param $headers
-     * @return $this
+     * @param array<string, mixed> $headers
+     * @return self
      */
     public function setHeaders($headers)
     {

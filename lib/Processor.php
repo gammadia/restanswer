@@ -5,11 +5,12 @@ use Voilab\Serviceanswer\Interfaces\Returnable;
 
 class Processor {
 
+    /** @var Container */
     public $container;
 
     /**
      * Mapping between the expected return and the provided Returnable
-     * @var array
+     * @var array<string, mixed>
      */
     public $mapping;
 
@@ -118,7 +119,7 @@ class Processor {
      *      ]
      *  ]
      *
-     *  @param  array  $mapping
+     *  @param  array<string, mixed>  $mapping
      *
      *  @return Processor
      */
@@ -134,10 +135,10 @@ class Processor {
      *
      *  @see Processor::map()
      *
-     *  @param  Mixed  $content Objet de données
-     *  @param  array  $mapping Configuration du mapping
+     *  @param  mixed  $content Objet de données
+     *  @param  array<string, mixed>  $mapping Configuration du mapping
      *
-     *  @return array          Données mapées
+     *  @return mixed[]|null          Données mapées
      */
     private function recursiveMap($content, array $mapping) {
         $isCollection = isset($mapping['isCollection']) ? $mapping['isCollection'] : false;
@@ -188,10 +189,10 @@ class Processor {
      *  - Méthode à appeler sur un objet
      *  - ??? (Truc avec processorMapping dans la config)
      *
-     *  @param  Mixed  $object   Objet source des données
+     *  @param  mixed  $object   Objet source des données
      *  @param  String $accessor Spécification de l'accesseur. Voir détails.
      *
-     *  @return Mixed             Valeur ou null
+     *  @return mixed             Valeur ou null
      */
     private function getKeyContent($object, $accessor) {
         $successive_acessors = explode('.', $accessor);

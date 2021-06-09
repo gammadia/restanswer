@@ -1,27 +1,20 @@
 {
-    "name": "voilab/restanswer",
+    "name": "gammadia/voilab-restanswer",
     "type": "library",
-    "description": "Response system for REST Apis.",
-    "homepage": "https://stash.gammadia.ch/projects/LIBS/repos/restanswer/browse",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://stash.gammadia.ch/scm/libs/restanswer.git"
-        }
-    ],
-    "require": {
-        "pimple/pimple": "3.*",
-        "voilab/serviceanswer": "0.*"
+    "description": "Fork of voilab/restanswer with support for modern PHP versions.",
+    "replace": {
+        "voilab/restanswer": "^0.3"
     },
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Joël Poulin",
-            "email": "joel@voilab.org",
-            "homepage": "http://www.voilab.org",
-            "role": "Developer"
-        }
-    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "pimple/pimple": "^3.0",
+        "gammadia/voilab-serviceanswer": "^0.2"
+    },
+    "require-dev": {
+        "overtrue/phplint": "^2.4|^3.0",
+        "phpstan/phpstan": "^0.12"
+    },
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {

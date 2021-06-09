@@ -11,18 +11,11 @@ use Voilab\Restanswer\Renderer;
  */
 class Standard implements ContentType
 {
-
-    /**
-     * @inheritdoc
-     */
     public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         return $content;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function renderError($content, Renderer $renderer)
     {
         return $content;

@@ -17,10 +17,6 @@ class Separated implements ContentType
      */
     public $separator;
 
-
-    /**
-     * @inheritdoc
-     */
     public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         if (is_string($content)) {
@@ -48,9 +44,6 @@ class Separated implements ContentType
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function renderError($content, Renderer $renderer)
     {
         return $this->render($content, $renderer);

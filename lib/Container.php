@@ -12,7 +12,7 @@ use Voilab\Restanswer\Renderer\Slim;
 class Container extends \Pimple\Container {
 
     /**
-     * @param array $config Global configuration
+     * @param mixed[] $config Global configuration
      * @param mixed $engine Engine used for the Rest API
      */
     public function __construct(array $config, $engine)
@@ -48,19 +48,19 @@ class Container extends \Pimple\Container {
         });
 
         $this['defaultContentType'] = function ($c) {
-            return new Standard($c);
+            return new Standard();
         };
         $this['jsonContentType'] = function ($c) {
-            return new Json($c);
+            return new Json();
         };
         $this['csvContentType'] = function ($c) {
-            return new Csv($c);
+            return new Csv();
         };
         $this['tabContentType'] = function ($c) {
-            return new Tab($c);
+            return new Tab();
         };
         $this['stringContentType'] = function ($c) {
-            return new Text($c);
+            return new Text();
         };
 
         $this['processor'] = function ($c) {

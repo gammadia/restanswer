@@ -10,10 +10,6 @@ use Voilab\Restanswer\Renderer;
  */
 class Text implements ContentType
 {
-
-    /**
-     * @inheritdoc
-     */
     public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         if (is_string($content)) {
@@ -28,9 +24,6 @@ class Text implements ContentType
         }
     }
 
-    /**
-     * @inheritdoc
-     */
     public function renderError($content, Renderer $renderer)
     {
         return $this->render($content, $renderer);

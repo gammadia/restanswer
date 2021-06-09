@@ -12,7 +12,7 @@ interface ContentType
 {
 
     /**
-     * @param $content
+     * @param mixed $content
      * @param Renderer $renderer
      * @param bool $newLineEOF
      * @return mixed
@@ -20,7 +20,7 @@ interface ContentType
     public function render($content, Renderer $renderer, $newLineEOF = false);
 
     /**
-     * @param $content
+     * @param mixed $content
      * @param Renderer $renderer
      * @return mixed
      */

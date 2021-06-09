@@ -10,9 +10,6 @@ use Voilab\Restanswer\Renderer;
  */
 class Json implements ContentType
 {
-    /**
-     * @inheritdoc
-     */
     public function render($content, Renderer $renderer, $newLineEOF = false)
     {
         if ($content) {
@@ -21,9 +18,6 @@ class Json implements ContentType
         return null;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function renderError($message, Renderer $renderer)
     {
         return json_encode(array(
