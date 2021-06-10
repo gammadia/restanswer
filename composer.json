@@ -9,7 +9,7 @@
     "require": {
         "php": "^7.2|^8.0",
         "pimple/pimple": "^3.0",
-        "gammadia/voilab-serviceanswer": "^0.2"
+        "gammadia/voilab-serviceanswer": "^1.0"
     },
     "require-dev": {
         "overtrue/phplint": "^2.4|^3.0",
