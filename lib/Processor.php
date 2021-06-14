@@ -207,7 +207,7 @@ class Processor {
             } elseif (isset($object->$accessor)) {
                 // Nom de propriété d'un objet
                 $object = $object->$accessor;
-            } elseif (method_exists($object, $accessor)) {
+            } elseif (null !== $object && method_exists($object, $accessor)) {
                 // Méthode à appeler sur un objet
                 $object = $object->$accessor();
             } elseif ($this->container['config']['processorMapping']['propertyArrayAccessCheck'] && isset($object[$accessor])) {
