@@ -8,7 +8,7 @@ A fork for modern days [![CI](https://github.com/gammadia/voilab-restanswer/acti
 
 This is a fork of `voilab/restanswer` adapted for modern PHP development, which supports :
 
-* PHP `7.2` <-> `8.0`
+* PHP `7.2` <-> `8.1`
 
 The following changes were applied to the dev dependencies :
 
