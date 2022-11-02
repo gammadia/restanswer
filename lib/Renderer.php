@@ -247,7 +247,7 @@ abstract class Renderer
         }
 
         // caching
-        $this->setHeader('ETag', sha1($this->content));
+        $this->setHeader('ETag', sha1((string)$this->content));
     }
 
 /** ================ / Private methods ====================================== */
